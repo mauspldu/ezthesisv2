@@ -1,0 +1,18 @@
+\definecolor{White}{gray}{1} %defineelcolorblanco de una escale de grises 0 negro 1 blanco
+\textcolor{White}{AUTORIZACI'ON DE USO Y PUBLICACI'ON}
+
+\begin{wrapfigure}{l}{0.25\textwidth} %h posicion de la grafica
+\centering
+\includegraphics[scale=0.4]{utn}
+\end{wrapfigure}
+UNIVERSIDAD T'ECNICA DEL NORTE\\
+BIBLIOTECA UNIVERSITARIA\\
+AUTORIZACI'ON DE USO Y PUBLICACI'ON
+
+
+On the other side, if you are only interested on
+certain values you can use the contour plot, you 
+can use the contour plot, you can use the contour 
+plot, you can use the contour plot, you can use 
+the contour plot, you can use the contour plot, 
+you can use the contour plot, like the one on the left.

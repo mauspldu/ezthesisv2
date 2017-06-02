@@ -1,0 +1,12 @@
+
+\prefacesection{\normalsize Resumen }
+
+Un p'endulo invertido es un dispositivo que consiste en una barra cil'indrica con 
+libertad de oscilar alrededor de un pivot fijo, esta montado sobre un carro que sigue  una  trayectoria  horizontal. El objetivo es mantener el p'endulo perpendicular a la trayectoria del carro ante la presencia de perturbaciones en el sistema; el sistema corrige la posici'on angular del p'endulo desplazando el carro con un sistema de banda-motor, seg'un una acci'on de control calculada.
+
+El controlador implementado para el sistema fue desarrollado mediante la t'ecnica de espacio de estados a partir del modelo matem'atico y simulado en Matlab obteniendo sus ganancias, las mismas que sirven para modificar el comportamiento del sistema. El sistema de control est'a divido en dos, una parte de monitoreo de datos o HMI y otra de adquisici'on de datos y control. 
+
+El sistema de adquisici'on de datos est'a montado en 4 nodos controlados por Arduinos dentro de una red CAN; el nodo 0 o nodo central tiene la tarea de recibir datos desde la red, procesarlos y tomar una acci'on de control; tambi'en tiene la importante tarea de servir de enlace entre la HMI y el resto de la red. El nodo 1, adquiere el dato de posici'on del carro y la envia al nodo 2; 'este a su vez toma el dato del 'angulo del p'endulo y lo envia al nodo 0. El nodo 4 en conjunto con un puente H toma la acci'on de control enviada desde el nodo 0 y la convierte en voltaje el cual controla el motor enlazado al carro.
+
+El sistema de monitoreo o HMI desarrollada en PyCharm muestra los datos provenientes de la red, como la posici'on y velocidad del carro y del p'endulo. Desde la HMI se controla la red de comunicaciones y se puede enviar datos de ganancias para el controlador en el nodo central.
+

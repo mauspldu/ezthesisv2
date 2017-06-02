@@ -1,0 +1,12 @@
+
+\prefacesection{\normalsize Abstract }
+
+An inverted pendulum is a device consisting of a cylindrical bar, free to oscillate about a fixed pivot, is mounted on a carriage following a horizontal path. The objective is to maintain the pendulum perpendicular to the trajectory of the car in the presence of disturbances in the system; the system corrects the angular position of the pendulum by moving the carriage with a motor-band system, according to a calculated control action.
+
+The controller implemented for the system was developed using the state space technique from the mathematical model and simulated in Matlab obtaining its gains, which are used to modify the behavior of the system. The control system is divided into two, one part of data monitoring or HMI and one of data acquisition.
+Data and control.
+
+The data acquisition system is mounted on 4 nodes controlled by Arduinos within a CAN network; The node 0 or central node has the task of receiving data from the network, processing them and taking a control action; Also has the important task of serving as a link between the HMI and the rest of the network. Node 1 acquires the position data of the carriage and sends it to node 2; this in turn takes the data from the angle of the pendulum and sends it to node 0. The node 4 in conjunction with a bridge H takes the control action sent from node 0 and converts it to voltage which Controls the motor attached to the carriage.
+
+
+The monitoring system or HMI developed in PyCharm shows the data coming from the network, such as the position and speed of the car and the pendulum. From the HMI the communication network is controlled and profit data can be sent to the controller at the central node.

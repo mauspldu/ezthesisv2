@@ -1,0 +1,74 @@
+\chapter{\normalsize Programa base para el desarollo del Nodo 0 en Arduino,}
+\vspace{0cm}
+Autores: Carlos Xavier Rosero, Manel Velasco Garc'ia, incluidas librer'ias propias de arduino. Nombre y extensi'on de archivo \textit{\textbf{testDimitris.ino}}.
+
+ {\tiny
+
+
+\begin{lstlisting}[language=python]
+boolean txOn = false;  // whether the frame is complete
+unsigned char counterRx = 0;
+unsigned char bufferRx[20] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+float float0 = 0; //numbers to be sent
+float float1 = 0;
+unsigned char *pointer_float0 = (unsigned char *)&float0;
+unsigned char *pointer_float1 = (unsigned char *)&float1;
+float float2 = 0; //numbers to be received
+float float3 = 0;
+float *pointer_float2 = (float *)&bufferRx[1];
+float *pointer_float3 = (float *)&bufferRx[5];
+void setup()
+{
+  Serial.begin(115200);   // initialize serial:
+  pinMode(13,OUTPUT);
+  digitalWrite(13,LOW);
+}
+void loop()
+{
+  unsigned char i; 
+  unsigned char data0[4] = {0xcd, 0xcc, 0x0c, 0x40};
+  unsigned char data1[4] = {0xcd, 0xcc, 0x4c, 0x40};
+  unsigned char eof[4] = {'c','X','r','C'};
+  if (txOn)
+  {
+    for (i=0; i<4; i++)
+			Serial.write(pointer_float0[i]);
+    for (i=0; i<4; i++)
+      Serial.write(pointer_float1[i]);
+    for (i=0; i<4; i++)
+      Serial.write(eof[i]);
+  }
+  delay(100);
+  float0 = float2;
+  float1 = float3;
+}
+void serialEvent()
+{
+  while (Serial.available())
+  {
+    bufferRx[counterRx] = (unsigned char)Serial.read(); //get the new byte
+    if (counterRx >= 8)
+    {
+      counterRx = 0;
+       digitalWrite(13, !digitalRead(13)); //toggles led each time the buffer is 9 bytes long
+      switch (bufferRx[0]) //analyze command on first byte
+      {
+        case 0xf0:
+          txOn = true;
+          //here make a union of bytes to build the float registers
+          float2 = (*pointer_float2);
+          float3 = (*pointer_float3);           
+        break;
+        case 0xf1:
+          txOn = false;
+        break;
+      } 
+    }
+    else
+      counterRx++;
+  }
+}
+\end{lstlisting}
+
+}
+

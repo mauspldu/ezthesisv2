@@ -1,0 +1,36 @@
+\chapter{Conclusiones y Recomendaciones}
+\section{Conclusiones}
+\begin{enumerate}
+	\item Los documentos recopilados referentes al control por red mostraban 'unicamente el envio y recepci'on de varios tipos de datos a trav'es de una red sin que estos documentos est'en relacionados al dise'no de controladores; por otra parte, cuando se encontraba documentaci'on relacionada al desarrollo de controladores para p'endulos, era dentro de un mismo microprocesador con el que se adquiria, procesaba, calculaba y se tomaba una acci'on de control. Por tanto en base a que no se encontr'o informaci'on completa para desarrollar este trabajo se tomaron en cuenta 4 fundamentos ampliamente desarrollados en otras tesis y son: adquisici'on y procesamiento de datos, redes CAN, HMI's y diseño de controladores.
+	\item Los requerimientos necesarios para el sistema fueron tomados de documentos en los que se realizaba el control en sistemas de p'endulos invertidos pero la informaci'on relacionada a la implementaci'on de controladores en una red de campo de datos era pr'acticamente nula, por lo que la misma fu'e especialmente dise'nada y desarrollada para la planta.
+	
+	\item Como se muestra en  Fig. \ref{fig:simu} el sistema con las constantes establecidas en el trabajo previo es totalmente controlable. La misma simulaci'on nos da como resultado ganancias aproximadas para el sistema de control, las que sirvieron de base para el controlador real implementado con el que se hicieron las pruebas correspondientes.
+	\item La adquisici'on, monitoreo y control de datos fue realizada como se muestra en la Fig. \ref{fig:HMI} y es consecuente con lo planteado en el dise'no de la misma para el control desde la PC para toda la red. La interfaz se pus'o a prueba mientras se modificaban las ganancias para el controlador; as'i como para la adquisici'on y monitoreo de los datos provenientes de la red. 
+	\item Despu'es de haber implementado la red, HMI y el controlador para el sistema, las pruebas fueron realizadas y se pudieron obtener varios valores donde las ganancias estabilizan la planta.
+\end{enumerate}
+
+\section{Recomendaciones}
+\subsection{Recomendaciones del sistema electr'onico}
+\begin{enumerate}
+	\item El correcto funcionamiento de la planta con Arduino Uno muestra la efectividad en cuanto a trabajo de procesamiento que tienen estos shields y control que proveen para con los sensores; sin embargo se recomienda el uso y desarrollo en Arduino Due o Mega que cuentan con m'as pines para interrupciones externas que podr'ian ser usados para conectar los canales A y B de cada uno de los encoders para mejorar el rendimiento del sistema.
+	\item Habr'ia que cambiar los shields de comunicaci'on CAN si se usan algun otro tipo de shield de control, ya que los que est'an montados en la red son exclusivos para los Arduinos Uno o en su defecto manufacturar un shield propio.
+	
+\end{enumerate}
+\subsection{Recomendaciones del sistema de control}
+\begin{enumerate}
+	\item El sistema podr'ia responder de manera m'as o menos estable, dependiendo de las ganancias que sean calculadas a posteriori para el mismo controlador o para controladores que sean implementados con diferentes t'ecnicas de dise'no de controladores.
+	\item Para posteriores trabajos se deber'ia tomar en cuenta los tiempos de propagaci'on dentro del sistema de comunicaci'on CAN, aquellos que afectan al sistema de control de la planta.
+	\item Realizar las modificaciones del sistema de control dentro de los nodos para conseguir la estabilizaci'on del sistema en alto.
+\end{enumerate}
+\subsection{Recomendaciones para la HMI}
+\begin{enumerate}
+	\item Se podr'ia utilizar la HMI para trabajos no tan rigurosos, a'un que la proyecci'on es utilizarlo como punto de convergencia para intercambiar controladores sin tener que desmontar totalmente la red.
+	\item Se podr'ian mostrar m'as datos en la pantalla de la HMI que por el momento no son necesarias.
+	\item No utilizar mas de dos conectores USB al momento de correr el programa en Python, ya que puede causar fallas en la HMI.
+	
+\end{enumerate}
+\subsection{Otras recomendaciones}
+\begin{enumerate}
+	\item Si se trata de conseguir la estabilizaci'on en alto se aconseja reaalizar el desarrollo matem'atico de la planta as'i como de su simulaci'on previo a la implementaci'on de la misma. 
+	\item Como parte integral del desarrollo de este trabajo se utiliz'o la herramienta Latex para el documento escrito; por lo que se recomienda utilizarlo en posteriores trabajos.
+\end{enumerate}
